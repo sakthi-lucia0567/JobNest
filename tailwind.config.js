@@ -5,6 +5,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      fontWeight: {
+        thin: 300,
+        normal: 400,
+        medium: 500,
+        bold: 700,
+        extrabold: 900,
+      },
       colors: {
         dark: {
           text: "#f1f3f2",
