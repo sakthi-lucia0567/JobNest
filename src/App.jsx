@@ -1,4 +1,5 @@
 import "./App.css";
+import Board from "./components/Dashboard/Board";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <div className="text-light-text bg-light-background">
         <Header />
+        <Board />
       </div>
     </>
   );
