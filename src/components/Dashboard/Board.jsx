@@ -44,86 +44,94 @@ function Board() {
   };
 
   return (
-    <>
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="kanban-board">
-          <div className="column todo">
-            <h2>Todo</h2>
-            <Droppable droppableId="todo">
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {boardData.todo.map((item, index) => (
-                    <Draggable key={item} draggableId={item} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="task"
-                        >
-                          {item}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-          <div className="column pending">
-            <h2>Pending</h2>
-            <Droppable droppableId="pending">
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {boardData.pending.map((item, index) => (
-                    <Draggable key={item} draggableId={item} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="task"
-                        >
-                          {item}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-            {/* Implement Droppable and Draggable components similar to above */}
-          </div>
-          <div className="column done">
-            <h2>Done</h2>
-            <Droppable droppableId="done">
-              {(provided) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {boardData.done.map((item, index) => (
-                    <Draggable key={item} draggableId={item} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="task"
-                        >
-                          {item}
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-            {/* Implement Droppable and Draggable components similar to above */}
-          </div>
+    <DragDropContext onDragEnd={handleDragEnd}>
+      <div className="flex">
+        <div className="flex-1 p-4">
+          <h2 className="mb-4 text-xl font-bold">Todo</h2>
+          <Droppable droppableId="todo">
+            {(provided) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                className="bg-gray-200 p-2 rounded"
+              >
+                {boardData.todo.map((item, index) => (
+                  <Draggable key={item} draggableId={item} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="bg-white p-2 mb-2 rounded"
+                      >
+                        {item}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
-      </DragDropContext>
-    </>
+        <div className="flex-1 p-4">
+          <h2 className="mb-4 text-xl font-bold">Pending</h2>
+          <Droppable droppableId="pending">
+            {(provided) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                className="bg-gray-200 p-2 rounded"
+              >
+                {boardData.pending.map((item, index) => (
+                  <Draggable key={item} draggableId={item} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="bg-white p-2 mb-2 rounded"
+                      >
+                        {item}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+        <div className="flex-1 p-4">
+          <h2 className="mb-4 text-xl font-bold">Done</h2>
+          <Droppable droppableId="done">
+            {(provided) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                className="bg-gray-200 p-2 rounded"
+              >
+                {boardData.done.map((item, index) => (
+                  <Draggable key={item} draggableId={item} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="bg-white p-2 mb-2 rounded"
+                      >
+                        {item}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+      </div>
+    </DragDropContext>
   );
 }
 
